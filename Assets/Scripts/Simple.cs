@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Simple : MonoBehaviour
 {
+    // таймеры для того, чтобы не спамило в консоль
     int _isFixUpdatedTimer = 3;
     int _isUpdatedTimer = 3;
     int _isLateUpdatedTimer = 3;
@@ -24,16 +25,16 @@ public class Simple : MonoBehaviour
         if (_isLateUpdatedTimer > 0)
         {
             _isLateUpdatedTimer -= 1;
-            Debug.Log("Fixed Update");
+            Debug.Log("Late Update");
         }       
     }
 
     private void FixedUpdate()
     {
-        if (_isLateUpdatedTimer > 0)
+        if (_isFixUpdatedTimer > 0)
         {
             _isFixUpdatedTimer -= 1;
-            Debug.Log("Late Update");
+            Debug.Log("Fixed Update");
         }
     }
 
@@ -47,19 +48,17 @@ public class Simple : MonoBehaviour
         Debug.Log("Destroy");
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Start");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_isUpdatedTimer > 0)
         {
             _isUpdatedTimer -= 1;
-            Debug.Log("Updated");
+            Debug.Log("Update");
         }
     }
 }
